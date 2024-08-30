@@ -18,11 +18,9 @@
 <header>
 		<div class="nav">
 		    <a href="/"><h1 class="logo">EventHub</h1></a>
-		    <div class="nav-items">
-		        <h2>Create Event</h2>
-		    </div>
+		    
 		    <div class="auth-items">
-		        <a href="/"><h2>Home</h2></a>
+		        <a class="registert" href="/"><h2>Home</h2></a>
 		    </div>
 		</div>
 </header>
@@ -31,25 +29,25 @@
         <div class="row justify-content-center m-5">
             <div class="col-md-8">
                 <div class="box p-4 m-2">
-                        <h2 class="text-center mb-4">Registro</h2>
+                        <h2 class="text-center mb-4">Register Form</h2>
                         <form:form action="/register" method="POST" modelAttribute="newUser">
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="firstName">Nombre:</form:label>
+                                <form:label class="inputLabel" path="firstName">Nombre</form:label>
                                 <form:input path="firstName" class="form-control" />
                                 <form:errors path="firstName" class="text-danger" />
                             </div>
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="lastName">Apellido:</form:label>
+                                <form:label class="inputLabel" path="lastName">Apellido</form:label>
                                 <form:input path="lastName" class="form-control" />
                                 <form:errors path="lastName" class="text-danger" />
                             </div>
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="email">E-mail:</form:label>
+                                <form:label class="inputLabel" path="email">E-mail</form:label>
                                 <form:input path="email" class="form-control" />
                                 <form:errors path="email" class="text-danger" />
                             </div>
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="location">Ubicación:</form:label>
+                                <form:label class="inputLabel" path="location">Ubicación</form:label>
                                 <form:input path="location" class="form-control" />
                                 <form:errors path="location" class="text-danger" />
                             </div>
@@ -62,23 +60,26 @@
                                 </form:select>
                             </div>
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="password">Contraseña:</form:label>
+                                <form:label class="inputLabel" path="password">Contraseña</form:label>
                                 <form:password path="password" class="form-control" />
                                 <form:errors path="password" class="text-danger" />
                             </div>
                             <div class="mb-3">
-                                <form:label class="inputLabel" path="confirm">Confirmar Contraseña:</form:label>
+                                <form:label class="inputLabel" path="confirm">Confirmar Contraseña</form:label>
                                 <form:password path="confirm" class="form-control" />
                                 <form:errors path="confirm" class="text-danger" />
                             </div>
-                            <input type="submit" class="btn btn-custom mt-4" value="Registrarme">
+                            <input type="submit" class="registert text-center  mt-4" value="Register">
                         </form:form>
-                        <a href="/index" class="d-block mt-3 text-center">Back to home</a>
+                        <div class="buttons d-flex text-center row">
+                        	<a href="/login" class="mt-3 text-center">I have an account</a>
+                        	<a href="/" class="mt-3 text-center">Back to home</a>
+                    	</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </main>
 </body>
 </html>

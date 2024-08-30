@@ -17,12 +17,8 @@
 <header>
 		<div class="nav">
 		    <a href="/"><h1 class="logo">EventHub</h1></a>
-		    <div class="nav-items">
-		        <h2>Search events</h2>
-		        <h2>Create Event</h2>
-		    </div>
 		    <div class="auth-items">
-				 <a href="/"><h2>Home</h2></a>
+				 <a href="/" class="registert"><h2>Home</h2></a>
 		    </div>
 		</div>
 </header>
@@ -35,16 +31,16 @@
 					<p class="text-danger">${errorLogin}</p>
 					<form action="/login2" method="POST">
 						<div class="mb-3">
-							<label>E-mail:</label>
+							<label>E-mail</label>
 							<input type="email" class="form-control" name="email" >
 						</div>
 						<div class="mb-3">
-							<label>Password:</label>
+							<label>Password</label>
 							<input type="password" class="form-control" name="password" >
 						</div>
-						<input type="submit" class="btn btn-custom mt-4" value="Login" >
+						<input type="submit" class="registert mt-4" value="Login" >
 					</form>
-					<a href="/index" class="d-block mt-3 text-center">Back to home</a>
+					<a href="/" class="d-block mt-3 text-center">Back to home</a>
 				</div>
 			</div>
 		</div>

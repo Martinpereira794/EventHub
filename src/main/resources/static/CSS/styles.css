@@ -5,11 +5,14 @@
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box
 }
 
 body {
     background-color: white;
-    color: #333;
+    font-family: "Roboto Condensed", sans-serif;
+	font-weight:bold;
+    
 }
 
 .logo {
@@ -17,7 +20,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color:white;
+    color: white;
 }
 
 .nav {
@@ -30,54 +33,51 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.nav-items h2, .auth-items h2 {
-    font-size: 16px;
+.nav-items h2,
+.auth-items h2 {
+    font-size: 18px;
     margin: 0;
     cursor: pointer;
     transition: color 0.3s;
 }
 
-.nav-items h2:hover, .auth-items h2:hover {
-    color: #e3ffff;
+.box h2 {
+    color: #006400;
 }
 
 .barra {
     display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
-    border: 3px solid #50C878;
+    border: 1px solid #50C878;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 8px;
+    margin: 0 auto;
 }
 
 .barra img {
     padding: 8px;
-	border-right:3px solid #50C878;
-    
+    border-right: 3px solid #50C878;
 }
 
 .searcher {
-    flex-grow: 1; /* Permite que el contenedor del formulario crezca */
-    margin-left: 8px; /* Espacio entre la imagen y el formulario */
+    flex-grow: 1;
+    margin-left: 8px;
 }
 
 .searcher form {
     display: flex;
-    width: 100%; /* Asegura que el formulario ocupe todo el espacio disponible */
+    width: 100%;
 }
 
 .search {
-    flex-grow: 1; /* El campo de búsqueda ocupa todo el espacio disponible */
+    flex-grow: 1;
     padding: 8px;
     outline: none;
-   
 }
 
-
-.nav-items {
+nav-items {
     display: flex;
     gap: 20px; /* Espacio entre "Search events" y "Create Event" */
 }
@@ -87,7 +87,9 @@ body {
     gap: 20px; /* Espacio entre "Login" y "Register" */
 }
 
-/* Estilos para las tarjetas de eventos */
+
+
+/* Contenedor y estilo de tarjetas */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -98,80 +100,154 @@ body {
 .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #f9f9f9;
-    border: 1px solid #50C878;
     border-radius: 8px;
     width: 300px;
-    height: 300px;
+    height: 450px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Asegura que el contenido no sobresalga */
+    overflow: hidden;
+    transition: transform 0.3s ease; /* Corregido el valor de transición */
 }
 
-/* Imagen de la tarjeta */
+.card:hover {
+    transform: scale(1.1); /* Corregido el valor de escala */
+}
+
+
+.card a {
+    text-decoration: none;
+    color:black;
+}
+
+header a {
+    text-decoration: none;
+}
+
 .card-img {
     width: 100%;
-    height: 200px; /* Ajusta la altura de la imagen */
+    height: 250px;
     overflow: hidden;
 }
 
 .card-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la imagen se ajuste dentro del contenedor */
-    border-bottom: 1px solid #50C878;
+    object-fit: cover;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-/* Cuerpo de la tarjeta */
 .card-body {
+    display: flex;
+    flex-direction: column;
     padding: 12px;
-    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-text-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+.card-container a{
+	text-decoration:none;
+}
+
+.card-body h3,
+.card-body p,
+.event-date,
+.event-location,
+.event-host,
+.event-province,
+.event-info {
+    font-size: 14px;
+    margin: 4px 0;
+    
 }
 
 .card-body h3 {
     font-size: 18px;
-    margin-bottom: 10px; /* Espacio debajo del título */
+    margin-bottom: 10px;
 }
-
-.card-body p {
-    font-size: 14px;
-    margin: 4px 0; /* Margen vertical */
-}
-
-.event-date, .event-location, .event-host, .event-province {
-    font-size: 14px;
-    margin: 4px 0; /* Margen vertical */
-}
-
-
 
 /* Botones personalizados */
-.btn-custom {
-    background-color: #7ce0a0;
-    color: #e3ffff;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 14px;
-    text-align: center;
-    display: inline-block;
+.btn-custom,
+.loginb,
+.registert,
+.registerb {
+    border-radius: 20px;
     cursor: pointer;
+    padding: 10px 30px;
+    font-size: 18px;
     transition: background-color 0.3s, color 0.3s;
 }
 
+.btn-custom {
+    color: white;
+    background-color: #50C878;
+}
+
 .btn-custom:hover {
-    color: #008f8d;
-    background-color: #5cb85c; /* Color de fondo al pasar el ratón */
+    background-color: #3DA15D;
 }
 
-/* Estilo para los botones dentro de las tarjetas */
-.buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: space-evenly;
-    margin-top: 10px;
+.loginb {
+    font-size: 18px;
+    background-color: white;
+    color: #006400;
+    border: none;
 }
 
-/* Estilo para los títulos de las secciones */
+.loginb:hover {
+    background-color: #3DA15D;
+    color: white;
+}
+
+.registert {
+    font-size: 18px;
+    background-color: #2F5D3D; /* Color de fondo normal */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra de caja sutil */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.registert:hover {
+    background-color: #1E4D2A; /* Color de fondo en hover */
+    transform: scale(1.05); /* Aumento ligero del tamaño al hacer hover */
+}
+
+
+.registerb {
+    font-size: 18px;
+    background-color: #3DA15D;
+    color: white;
+}
+
+.registerb:hover {
+    background-color: #50C878;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.form-control:focus {
+    border-color: #50C878 !important;
+    box-shadow: 0 0 5px 2px rgba(80, 200, 120, 0.5) !important;
+    outline: none;
+}
+
+a {
+    text-decoration: underline;
+    color: #006400;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .section-title {
     margin-bottom: 20px;
     font-size: 24px;
@@ -179,92 +255,231 @@ body {
     color: #333;
 }
 
-.eventhub{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:row;
-    gap:15px;
-    background-color:#50C878;
-    border-radius:8px;
+/* Estilo de la sección EventHub */
+.eventhub {
+    text-align: left;
+    padding: 70px 0; /* Ajustado para evitar el scroll */
+    color: #3DA15D;
+    margin-bottom: 40px; /* Espacio reducido */
+    max-width:750px;
+    margin-left:40px;
+    
+}
+
+.eventhub h1 {
+    font-size: 100px; /* Tamaño ajustado */
+    font-weight: bold;
+    max-width:600px;
+    
+   
     
 }
 
 .eventhub p {
-	font-weight: bold;
-    letter-spacing: 1px;
-    color:white;
-    font-size:16px;
-
-	}
-.event{
-	color:white;
-	font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size:48px;
-}
-
-.loginb{
-    font-size: 16px; /* Tamaño del texto */
-    padding: 10px 30px; /* Espaciado interno */
-    background-color: white; /* Color de fondo del botón */
-    color: #006400;
-    border: none; /* Sin bordes */
-    border-radius: 8px; /* Bordes redondeados */
-    cursor: pointer; /* Manito en hover */
-}
-
-.loginb:hover {
-    background-color:  #3DA15D;
-    color: white; /* Texto blanco */
-}
-
-.registerb{
-	font-size:16px;
-	padding:10px 30px;
-	border-radius:8px;
-	border:1px solid white;
-	cursor:pointer;
-	color: #006400;
-	
-}
-
-.registerb:hover {
-    background-color:  #3DA15D;
-    color: white; /* Texto blanco */
-    border:none;
+    font-size: 32px; /* Tamaño ajustado */
+    font-weight: bold; /* Texto en negrita */
+    margin: 15px 0;
+    max-width: 750px;
 }
 
 
-.box{
-	box-shadow: 0 0 5px 2px rgba(80, 200, 120, 0.5) !important; /* Sombra verde clara */
-	
-}
-.form-control {
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 8px;
-}
-
-/* Asegúrate de que el archivo CSS se está cargando correctamente */
-.form-control:focus {
-    border-color: #50C878 !important; /* Borde verde esmeralda */
-    box-shadow: 0 0 5px 2px rgba(80, 200, 120, 0.5) !important; /* Sombra verde clara */
-    outline: none; /* Eliminar el borde de enfoque predeterminado */
+/* Estilo de la sección Features */
+.features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #50C878;
+    gap:100px;
+    padding: 40px 20px; /* Ajustado para evitar el scroll */
 }
 
-/* Enlaces dentro de las tarjetas */
-a {
+.featurebox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 220px; /* Ajustado para que todo entre en la página */
+    margin: 0 15px; /* Espacio reducido */
+}
+
+.featurebox h2 {
+    font-size: 32px; /* Tamaño ajustado */
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.featurebox p {
+    font-size: 20px; /* Tamaño ajustado */
+    color: white;
+    font-weight:bold;
+}
+
+.cta-buttons {
+	padding:10px;
+	display:flex;
+	justify-content:space-evenly;
+	max-width:500px;
+	text-align:center;
+}
+
+.cta-buttons h2 {
+    font-size: 3px; /* Aumentar tamaño del título */
+    font-weight: bold; /* Hacer el título más llamativo */
+    margin-bottom: 20px; /* Añadir espacio debajo del título */
+    color: #3DA15D; /* Mantener el verde como color principal */
+   	margin-top:40px;
+    
+}
+
+
+.cta-buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 50px; /* Aumentar tamaño de los botones */
+    font-size: 20px; /* Aumentar el tamaño del texto en los botones */
+    border-radius: 20px;
+    color: white;
     text-decoration: none;
-    color:white;
+    transition: background-color 0.3s ease; /* Añadir una transición suave */
 }
 
-a:hover {
-		color: #006400;
-	
+.cta-buttons .login, .cta-buttons .register {
+    background-color: #3DA15D;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.cta-buttons .login:hover, .cta-buttons .register:hover {
+    background-color: #319a4c; /* Color ligeramente más oscuro al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    transform: scale(1.05); /* Aumenta el tamaño del botón */
 }
 
 
 
+/* Footer */
+footer {
+    background-color: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 15px 0; /* Ajustado para evitar el scroll */
+}
 
+footer p {
+    margin: 5px 0;
+}
+
+footer .text-muted {
+    color: #666;
+}
+
+/* Detalles del evento */
+.event-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.event-details h2 {
+    color: #2F5D3D; /* Color verde oscuro */
+}
+
+/* Mensajes */
+.message-wall {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-wall h3 {
+    color: #2F5D3D;
+}
+
+
+.index{
+	height:88vh;
+	width:100%;
+}
+
+.box {
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra de caja sutil */
+    align-items:center;
+    margin-top:30px;
+}
+
+.date-time {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.date {
+    flex: 2; /* Toma el doble del espacio que las horas */
+}
+
+.hour {
+    flex: 1; /* Toma el espacio restante */
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.location-province {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.location,
+.provinceevent {
+    flex: 1;
+}
+
+.location input,
+.provinceevent select {
+    width: 100%;
+}
+
+.form-control, .form-select {
+    height: calc(1.5em + .75rem + 2px); /* Ajusta la altura según tus necesidades */
+    padding: .375rem .75rem; /* Padding interno para ajustar el contenido */
+    font-size: 1rem; /* Tamaño de fuente uniforme */
+    line-height: 1.5; /* Altura de línea para alinear el texto */
+    border-radius: .375rem; /* Radio de borde para redondear los bordes */
+
+
+}
+
+.index{
+	height:99vh;
+	width:100%;
+}
+
+
+
+/* Estilo de la scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la scrollbar */
+}
+
+/* Parte deslizante de la scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: #3DA15D; 
+    border-radius: 4px; 
+        min-height: 20px; /* Altura mínima del thumb */
+    
+}
+
+/* Color de la parte deslizante cuando se pasa el cursor sobre ella */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #319a4c; /* Verde más oscuro */
+}
+
+/* Fondo de la pista de desplazamiento */
+::-webkit-scrollbar-track {
+    background-color: #e0f2f1; /* Verde muy claro, casi blanco */
+}
 

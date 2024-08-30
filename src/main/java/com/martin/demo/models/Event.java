@@ -1,10 +1,14 @@
 package com.martin.demo.models;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.Transient;
+import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,8 +38,16 @@ public class Event {
 	@NotEmpty(message="Event name is required.")
 	private String eventName;
 	
+	@DateTimeFormat(pattern = "HH:mm")
+	@NotNull(message="Start time is required")	
+	private LocalTime eventStartTime;
+	
+	@NotNull(message="End time is required")
+	@DateTimeFormat(pattern = "HH:mm")
+	private LocalTime eventEndTime;
+	
 	@Future //Fecha sea en el futuro
-	@DateTimeFormat(pattern="dd-MMM-yyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd") // Cambia el patrón para que coincida con el input type="date"	
 	@NotNull(message="Event date is required")
 	private Date eventDate;
 	
@@ -44,6 +56,9 @@ public class Event {
 	
 	@NotEmpty(message="Event Province is required.")
 	private String eventProvince;
+	
+	@NotEmpty(message="Event info is required")
+	private String eventInfo;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -88,6 +103,12 @@ public class Event {
 	public Date getEventDate() {
 		return eventDate;
 	}
+	
+	public String getFormattedEventDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(eventDate);
+    }
+
 
 	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
@@ -124,9 +145,32 @@ public class Event {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+		
 	
-	
-	
+	public LocalTime getEventStartTime() {
+		return eventStartTime;
+	}
+
+	public void setEventStartTime(LocalTime eventStartTime) {
+		this.eventStartTime = eventStartTime;
+	}
+
+	public LocalTime getEventEndTime() {
+		return eventEndTime;
+	}
+
+	public void setEventEndTime(LocalTime eventEndTime) {
+		this.eventEndTime = eventEndTime;
+	}
+
+	public String getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(String eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
 	public User getHost() {
 		return host;
 	}
@@ -150,7 +194,32 @@ public class Event {
 	public void setEventMessages(List<Message> eventMessages) {
 		this.eventMessages = eventMessages;
 	}
+	
+	@Transient
+    private MultipartFile eventImage;
 
+    @Column(name="event_image_path")
+    private String eventImagePath;
+
+    // Getters y setters para el campo de imagen
+
+    public MultipartFile getEventImage() {
+        return eventImage;
+    }
+
+    public void setEventImage(MultipartFile eventImage) {
+        this.eventImage = eventImage;
+    }
+
+    public String getEventImagePath() {
+        return eventImagePath;
+    }
+
+    public void setEventImagePath(String eventImagePath) {
+        this.eventImagePath =eventImagePath;
+
+    }
+    
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
