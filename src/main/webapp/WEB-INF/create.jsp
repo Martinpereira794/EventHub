@@ -17,9 +17,9 @@
 <body class="body-custom">
 <header>
     <div class="nav">
-        <a href="/"><h1 class="logo">EventHub</h1></a>
+        <a href="/home"><h1 class="logo">EventHub</h1></a>
         <div class="nav-items">
-            <a href="/"><h2 class="registert">Home</h2></a>
+            <a href="/home"><h2 class="registert">Home</h2></a>
         </div>
         <div class="auth-items">
             <c:choose>

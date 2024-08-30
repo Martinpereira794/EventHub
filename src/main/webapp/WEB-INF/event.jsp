@@ -5,27 +5,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+   <meta charset="ISO-8859-1">
     <title>Event</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos CSS -->
+ 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+<link rel="stylesheet" href="/CSS/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="bg-success text-white py-3 mb-4">
-        <div class="container">
-            <h1 class="display-4">Event Details</h1>
+    <header>
+        <div class="nav">
+            <a href="/home"><h1 class="logo">EventHub</h1></a>
+            <div class="nav-items">
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="event-details">
-                    <h2>${event.eventName}</h2>
-                    <p><strong>Host:</strong> ${event.host.firstName}</p>
-                    <p><strong>Date:</strong> ${event.eventDate}</p>
-                    <p><strong>Location:</strong> ${event.eventLocation}</p>
-                    <p><strong>People attending:</strong> ${event.joinedUsers.size()}</p>
+    <div class="container mt-4">
+        <div>
+            <div>
+                <div class="eventbox">
+                	<img  src="/uploads/${event.eventImagePath}" alt="${event.eventName}">
+                	<p class="m-4">${event.formattedEventDate}</p>
+                	<div class="event-details">
+                    	<h2 class="event-title">${event.eventName}</h2>
+                    	<h2 class="event-host">Organized by: ${event.host.firstName}</h2>
+                    </div>
+                    <div class="event-details">
+                    	<h2>Fecha y hora</h2>
+                    	<p>${event.formattedEventDate}</p>
+                    	<div class="event-hour">
+                    		<p>${event.eventStartTime}</p>
+                    		<p>${event.eventEndTime}</p>
+                    	</div>
+                    </div>
+                    <div class="event-details">
+                    	<h2>Address</h2>
+                    	<p>${event.eventLocation}</p>
+                    </div>
+                    <div class="event-details">
+                    	<h2>About this event</h2>
+                    	<p>${event.eventInfo}</p>
+               		</div>
+               		<div class="event-details">
+               			<h2>People Joined</h2>
+               			<p>${event.joinedUsers.size()}</p>
+               		</div>
                 </div>
                 
                 <table class="table table-striped">
@@ -44,28 +72,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
-            </div>
-            
-            <div class="col-md-6">
-                <div class="message-wall border rounded p-3">
-                    <h3>Message Wall</h3>
-                    <div class="messages mb-3">
-                        <c:forEach items="${event.eventMessages}" var="msg">
-                            <p><strong>${msg.author.firstName}:</strong> ${msg.content}</p>
-                        </c:forEach>
-                    </div>
-                    
-                    <form:form action="/create_message" method="post" modelAttribute="message">
-                        <div class="mb-3">
-                            <form:errors path="content" class="text-danger"/>
-                            <form:label path="content" class="form-label">Add Comment</form:label>
-                            <form:textarea path="content" class="form-control"></form:textarea>
-                        </div>
-                        <form:hidden path="author" value="${userInSession.id}"/>
-                        <form:hidden path="event" value="${event.id}"/>
-                        <input type="submit" value="Submit" class="btn btn-success">
-                    </form:form>
-                </div>
             </div>
         </div>
     </div>

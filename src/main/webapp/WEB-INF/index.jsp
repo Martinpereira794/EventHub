@@ -53,7 +53,5 @@
    	<footer>
    		<p>Designed by Martin
    	</footer>
-    
-
 </body>
 </html>
